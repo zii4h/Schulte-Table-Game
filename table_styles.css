@@ -1,9 +1,14 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
 }
 
 body {
@@ -12,24 +17,29 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; 
-    padding: 0.5rem;
-   
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 /* Container */
 .container {
     width: 100%;
-    max-width: 40rem;
-    padding: 1rem;
+    max-width: 32rem;
+    padding: 0.6rem;
     position: relative;
-
-
+    transform: scale(0.85);
+    transform-origin: center center;
 }
 
 @media (min-width: 640px) {
     .container {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 }
 
@@ -348,10 +358,13 @@ h1 {
 /* Light Mode (Default State) */
 #sun-icon {
     display: none;
+    margin-left: 25px;
+   
 }
 
 #moon-icon {
     display: block;
+    margin-left: 25px;
 }
 
 /*Dark Mode (Active State)*/
