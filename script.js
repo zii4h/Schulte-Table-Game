@@ -1,9 +1,10 @@
-// Game settings
+// ==========================================================
+// CONFIGURATION VARIABLES
+// ==========================================================
 let gridSize = 5;
 let clickColor = 'green';
 let showColors = true;
 
-// Game state
 let gameState = 'ready';
 let currentNumber = 1;
 let startTime = 0;
@@ -11,7 +12,7 @@ let timerInterval = null;
 let timeElapsed = 0;
 let maxNumber = gridSize * gridSize;
 
-// Color mappings
+// Color mappings for when showColors is TRUE
 const colorMap = {
     green: '#6ee7b7b4',
     blue: '#93c4fdab',
@@ -21,7 +22,7 @@ const colorMap = {
     orange: '#fdbb74a1'
 };
 
-// Text color mappings for light mode
+// Text color mappings for light mode (when showColors is TRUE)
 const textColorMap = {
     green: '#065f46',
     blue: '#1e3a8a',
@@ -31,7 +32,15 @@ const textColorMap = {
     orange: '#7c2d12'
 };
 
-// DOM elements
+// Theme-specific gray colors for when showColors is FALSE
+const LIGHT_MODE_GRAY = '#cacacaea';      
+const DARK_MODE_GRAY = '#414141ff';       
+const TEXT_COLOR_LIGHT = '#6e6e6eff';     
+const TEXT_COLOR_DARK = '#aaaaaaff';   
+
+// ==========================================================
+// DOM ELEMENTS
+// ==========================================================
 const board = document.getElementById('game-board');
 const startButton = document.getElementById('start-button');
 const timerDisplay = document.getElementById('timer-display');
@@ -40,7 +49,9 @@ const highScoreDisplay = document.getElementById('high-score');
 const showColorsCheckbox = document.getElementById('show-colors');
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 
-// Utility Functions
+// ==========================================================
+// UTILITY FUNCTIONS
+// ==========================================================
 
 /**
  * Shuffles an array in place using Fisher-Yates algorithm
@@ -53,7 +64,7 @@ function shuffleArray(array) {
 }
 
 /**
- * Formats milliseconds into MM:SS.ms format
+ * Formats milliseconds into MM:SS.ms format (timer)
  */
 function formatTime(ms) {
     const totalSeconds = ms / 1000;
@@ -71,7 +82,6 @@ function isDarkMode() {
     return document.body.classList.contains('dark-mode');
 }
 
-// High Score Functions
 
 /**
  * Loads the high score for the current grid size
@@ -100,8 +110,6 @@ function saveHighScore(time) {
     return false;
 }
 
-// Board Functions
-
 /**
  * Creates and renders the game board
  */
@@ -113,7 +121,7 @@ function createBoard() {
     board.innerHTML = '';
     board.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
     board.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
-    
+
     // Update grid class for dynamic font sizing
     board.className = `schulte-grid grid-${gridSize}`;
 
@@ -128,8 +136,6 @@ function createBoard() {
     timerDisplay.textContent = '00:00.00';
     targetNumberDisplay.textContent = '1';
 }
-
-// Timer Functions
 
 /**
  * Starts the game timer
@@ -153,8 +159,6 @@ function stopTimer() {
         timerInterval = null;
     }
 }
-
-// Game Functions
 
 /**
  * Starts or resets the game
@@ -188,16 +192,24 @@ function checkClick(event) {
         }
 
         if (showColors) {
+            // Logic for when colors ARE enabled
             cell.style.backgroundColor = colorMap[clickColor];
-            // Keep text color consistent - white in dark mode, colored in light mode
+            
+            // Text color logic for colored clicks
             if (isDarkMode()) {
-                cell.style.color = '#ffffff';
+                cell.style.color = '#ffffff'; // White text in dark mode for contrast
             } else {
-                cell.style.color = textColorMap[clickColor];
+                cell.style.color = textColorMap[clickColor]; // Colored text in light mode
             }
         } else {
-            cell.style.backgroundColor = '#e5e7eb';
-            cell.style.color = '#9ca3af';
+            // Logic for when colors are NOT enabled (use theme-specific gray)
+            if (isDarkMode()) {
+                cell.style.backgroundColor = DARK_MODE_GRAY;
+                cell.style.color = TEXT_COLOR_DARK;
+            } else {
+                cell.style.backgroundColor = LIGHT_MODE_GRAY;
+                cell.style.color = TEXT_COLOR_LIGHT;
+            }
         }
         cell.style.pointerEvents = 'none';
 
@@ -207,9 +219,9 @@ function checkClick(event) {
             // Game won
             gameState = 'finished';
             stopTimer();
-            
+
             saveHighScore(timeElapsed);
-            
+
             startButton.textContent = 'Play Again';
             targetNumberDisplay.textContent = '✓';
         } else {
@@ -224,7 +236,9 @@ function checkClick(event) {
     }
 }
 
-// Event Listeners
+// ==========================================================
+// EVENT LISTENERS
+// ==========================================================
 
 // Grid size buttons
 document.querySelectorAll('.grid-btn').forEach(btn => {
