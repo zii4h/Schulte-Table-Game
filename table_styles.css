@@ -33,7 +33,7 @@ body {
     max-width: 32rem;
     padding: 0.6rem;
     position: relative;
-    transform: scale(0.85);
+    transform: scale(0.75);
     transform-origin: center center;
 }
 
