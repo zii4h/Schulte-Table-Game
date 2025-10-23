@@ -203,7 +203,6 @@ function checkClick(event) {
         currentNumber++;
 
         if (currentNumber > maxNumber) {
-            // Game won
             gameState = 'finished';
             stopTimer();
 
@@ -269,3 +268,19 @@ window.onload = function() {
     createBoard();
     loadHighScore();
 };
+
+
+function checkClick(event) {
+    const cell = event.target.closest('.schulte-cell');
+    if (!cell) return;
+
+    if (gameState !== 'playing') {
+        startButton.classList.remove('wiggle');
+        void startButton.offsetWidth; 
+        startButton.classList.add('wiggle');
+        setTimeout(() => {
+            startButton.classList.remove('wiggle');
+        }, 400);
+        return;
+    }
+}

@@ -294,6 +294,10 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.start-button-container .text-button  {
+    font-size: 24px;
+}
+
 @media (min-width: 640px) {
     .start-button-container {
         margin-top: 1.5rem;
@@ -641,4 +645,21 @@ body.dark-mode .github-link a {
 
 body.dark-mode .github-link a:hover {
     color: #d1d5db;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0) scale(0.95); }
+    20%, 60% { transform: translateX(-3px) scale(0.99); }
+    40%, 80% { transform: translateX(3px) scale(0.99); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+.text-button.wiggle {
+    animation: wiggle 0.2s ease-in-out;
+    color: rgb(87, 87, 87);
 }
