@@ -12,8 +12,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 1rem;
+    height: 100vh;
+    padding: 0.5rem;
+    overflow: hidden;
 }
 
 /* Container */
@@ -21,21 +22,48 @@ body {
     width: 100%;
     max-width: 40rem;
     padding: 1rem;
-    padding-top: 60px;
+    position: relative;
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 @media (min-width: 640px) {
     .container {
-        padding: 2rem;
-        padding-top: 70px;
+        padding: 1.5rem;
     }
+}
+
+/* Dark Mode Toggle - Fixed Position */
+#dark-mode-toggle {
+    background: transparent;
+    border: none;
+    color: #1f2937;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+@media (min-width: 640px) {
+    #dark-mode-toggle {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+body.dark-mode #dark-mode-toggle {
+    color: #d1d5db;
 }
 
 /* Header */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     margin-bottom: 0.5rem;
 }
 
@@ -46,6 +74,7 @@ body {
 .header-right {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 h1 {
@@ -289,8 +318,18 @@ h1 {
 .theme-icon {
     display: block; 
     position: absolute; 
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+}
+
+@media (min-width: 640px) {
+    .theme-icon {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .icon-button {
@@ -564,4 +603,38 @@ body.dark-mode .high-score-value {
 body.dark-mode .options-section,
 body.dark-mode .high-score-section {
     border-color: #374151;
+}
+
+/* GitHub Link */
+.github-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+.github-link a {
+    color: #6b7280;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-link a:hover {
+    color: #1f2937;
+}
+
+.github-link svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+body.dark-mode .github-link a {
+    color: #9ca3af;
+}
+
+body.dark-mode .github-link a:hover {
+    color: #d1d5db;
 }
