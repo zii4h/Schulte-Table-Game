@@ -660,6 +660,6 @@ body.dark-mode .github-link a:hover {
 }
 
 .text-button.wiggle {
-    animation: wiggle 0.2s ease-in-out;
+    animation: wiggle 0.4s ease-in-out;
     color: rgb(87, 87, 87);
 }

@@ -1,4 +1,3 @@
-
 let gridSize = 3;
 let clickColor = 'green';
 let showColors = true;
@@ -168,10 +167,19 @@ function startGame() {
  * Handles cell click events
  */
 function checkClick(event) {
-    if (gameState !== 'playing') return;
-
     const cell = event.target.closest('.schulte-cell');
     if (!cell) return;
+
+    if (gameState !== 'playing') {
+        // Wiggle the start button to indicate they need to start first
+        startButton.classList.remove('wiggle');
+        void startButton.offsetWidth; // Force reflow to restart animation
+        startButton.classList.add('wiggle');
+        setTimeout(() => {
+            startButton.classList.remove('wiggle');
+        }, 400);
+        return;
+    }
 
     const clickedNumber = parseInt(cell.dataset.number, 10);
 
@@ -203,6 +211,7 @@ function checkClick(event) {
         currentNumber++;
 
         if (currentNumber > maxNumber) {
+            // Game won
             gameState = 'finished';
             stopTimer();
 
@@ -268,19 +277,3 @@ window.onload = function() {
     createBoard();
     loadHighScore();
 };
-
-
-function checkClick(event) {
-    const cell = event.target.closest('.schulte-cell');
-    if (!cell) return;
-
-    if (gameState !== 'playing') {
-        startButton.classList.remove('wiggle');
-        void startButton.offsetWidth; 
-        startButton.classList.add('wiggle');
-        setTimeout(() => {
-            startButton.classList.remove('wiggle');
-        }, 400);
-        return;
-    }
-}
