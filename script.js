@@ -1,5 +1,5 @@
 
-let gridSize = 5;
+let gridSize = 3;
 let clickColor = 'green';
 let showColors = true;
 
