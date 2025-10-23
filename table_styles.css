@@ -14,15 +14,21 @@ body {
     justify-content: center;
     min-height: 100vh;
     padding: 1rem;
-    zoom: 0.8;
 }
 
 /* Container */
 .container {
     width: 100%;
     max-width: 40rem;
-    padding: 2rem;
-    padding-top: 70px;
+    padding: 1rem;
+    padding-top: 60px;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 2rem;
+        padding-top: 70px;
+    }
 }
 
 /* Header */
@@ -43,16 +49,35 @@ body {
 }
 
 h1 {
-    font-size: 1.875rem;
+    font-size: 1.25rem;
     font-weight: 800;
     text-align: center;
     color: #1f1e1e;
+}
+
+@media (min-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 640px) {
+    h1 {
+        font-size: 1.875rem;
+    }
 }
 
 .subtitle {
     text-align: center;
     color: #6b7280;
     margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .subtitle {
+        font-size: 1rem;
+    }
 }
 
 /* Status Row */
@@ -73,12 +98,20 @@ h1 {
 }
 
 .next-number-box {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #374151;
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     width: 100%;
     text-align: center;
+}
+
+@media (min-width: 640px) {
+    .next-number-box {
+        font-size: 1.125rem;
+        padding: 0.75rem;
+        width: auto;
+    }
 }
 
 .next-number-box #target-number {
@@ -86,17 +119,18 @@ h1 {
 }
 
 .timer-display {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: 'Courier New', monospace;
     color: #1f2937;
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     width: 100%;
     text-align: center;
 }
 
 @media (min-width: 640px) {
-    .next-number-box,
     .timer-display {
+        font-size: 1.5rem;
+        padding: 0.75rem;
         width: auto;
     }
 }
@@ -106,12 +140,18 @@ h1 {
     display: grid;
     gap: 2px;
     aspect-ratio: 1 / 1;
-    max-width: 31.25rem;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
     padding: 2px;
     background-color: #949aa0;
     border: 2px solid #949aa0;
+}
+
+@media (min-width: 640px) {
+    .schulte-grid {
+        max-width: 31.25rem;
+    }
 }
 
 .schulte-cell {
@@ -124,23 +164,72 @@ h1 {
     user-select: none;
     color: #1f2937;
     background-color: #FAF9F6;
+    min-height: 50px;
 }
 
-/* Dynamic font sizes based on grid */
+@media (min-width: 480px) {
+    .schulte-cell {
+        min-height: 60px;
+    }
+}
+
+@media (min-width: 640px) {
+    .schulte-cell {
+        min-height: 0;
+    }
+}
+
+/* Dynamic font sizes based on grid - Mobile First */
 .grid-3 .schulte-cell { 
-    font-size: 3rem; 
+    font-size: 2rem; 
 }
 
 .grid-4 .schulte-cell { 
-    font-size: 2.25rem; 
+    font-size: 1.5rem; 
 }
 
 .grid-5 .schulte-cell { 
-    font-size: 1.75rem; 
+    font-size: 1.25rem; 
 }
 
 .grid-6 .schulte-cell { 
-    font-size: 1.5rem; 
+    font-size: 1rem; 
+}
+
+@media (min-width: 480px) {
+    .grid-3 .schulte-cell { 
+        font-size: 2.5rem; 
+    }
+
+    .grid-4 .schulte-cell { 
+        font-size: 1.875rem; 
+    }
+
+    .grid-5 .schulte-cell { 
+        font-size: 1.5rem; 
+    }
+
+    .grid-6 .schulte-cell { 
+        font-size: 1.25rem; 
+    }
+}
+
+@media (min-width: 640px) {
+    .grid-3 .schulte-cell { 
+        font-size: 3rem; 
+    }
+
+    .grid-4 .schulte-cell { 
+        font-size: 2.25rem; 
+    }
+
+    .grid-5 .schulte-cell { 
+        font-size: 1.75rem; 
+    }
+
+    .grid-6 .schulte-cell { 
+        font-size: 1.5rem; 
+    }
 }
 
 .schulte-cell:hover {
@@ -169,8 +258,14 @@ h1 {
 /* Start Button Container */
 .start-button-container {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+    .start-button-container {
+        margin-top: 2rem;
+    }
 }
 
 /* Text Button */
@@ -178,12 +273,17 @@ h1 {
     background: transparent;
     border: none;
     color: #1f2937;
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
     padding: 0.5rem 1rem;
     transition: background-color 0.2s;
- 
+}
+
+@media (min-width: 640px) {
+    .text-button {
+        font-size: 1rem;
+    }
 }
 
 .theme-icon {
@@ -193,32 +293,36 @@ h1 {
     left: 0;
 }
 
-
 .icon-button {
     position: relative; 
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
 }
 
+@media (min-width: 640px) {
+    .icon-button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
 
 /* Light Mode (Default State) */
 #sun-icon {
-    display: none; /* Hide sun icon in light mode */
+    display: none;
 }
 
 #moon-icon {
-    display: block; /* Show moon icon in light mode */
+    display: block;
 }
 
 /*Dark Mode (Active State)*/
 body.dark-mode #sun-icon {
-    display: block; /* Show sun icon in dark mode */
+    display: block;
 }
 
 body.dark-mode #moon-icon {
-    display: none; /* Hide moon icon in dark mode */
+    display: none;
 }
-
 
 body.dark-mode .icon-button {
     color: #d1d5db; 
@@ -240,7 +344,6 @@ body.dark-mode .icon-button {
     align-items: center;
     justify-content: center;
 }
-
 
 /* Options Section */
 .options-section {
@@ -272,7 +375,7 @@ body.dark-mode .icon-button {
 
 /* Grid Size Buttons */
 .grid-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.875rem;
     border: 2px solid #e5e7eb;
     background: white;
     cursor: pointer;
@@ -280,6 +383,15 @@ body.dark-mode .icon-button {
     font-size: 0.875rem;
     font-weight: 600;
     color: #4b5563;
+    flex: 1;
+    min-width: 60px;
+}
+
+@media (min-width: 480px) {
+    .grid-btn {
+        flex: 0;
+        padding: 0.5rem 1rem;
+    }
 }
 
 .grid-btn:hover {
@@ -295,11 +407,18 @@ body.dark-mode .icon-button {
 
 /* Color Options */
 .color-option {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     cursor: pointer;
     border: 3px solid transparent;
     transition: all 0.2s;
+}
+
+@media (min-width: 640px) {
+    .color-option {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
 
 .color-option:hover {
@@ -345,9 +464,15 @@ body.dark-mode .icon-button {
 }
 
 .high-score-value {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: #585858;
+}
+
+@media (min-width: 640px) {
+    .high-score-value {
+        font-size: 1.25rem;
+    }
 }
 
 /* Dark Mode Styles */
@@ -360,7 +485,7 @@ body.dark-mode .container {
 }
 
 body.dark-mode h1 {
-    color: #d4d4d4; /* Darkmode title */
+    color: #d4d4d4;
 }
 
 body.dark-mode .subtitle,
@@ -400,18 +525,15 @@ body.dark-mode .text-button {
     color: #d1d5db;
 }
 
-
-
 body.dark-mode .icon-button {
     color: #d1d5db;
 }
-
 
 body.dark-mode .option-group h3 {
     color: #d1d5db;
 }
 
-body.dark-mode .grid-btn { /* Grid size colors */
+body.dark-mode .grid-btn {
     background-color: #1d1d1f;
     border-color: #4b5563;
     color: #d1d5db;

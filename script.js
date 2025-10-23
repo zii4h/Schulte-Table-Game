@@ -1,6 +1,4 @@
-// ==========================================================
-// CONFIGURATION VARIABLES
-// ==========================================================
+
 let gridSize = 5;
 let clickColor = 'green';
 let showColors = true;
@@ -12,7 +10,6 @@ let timerInterval = null;
 let timeElapsed = 0;
 let maxNumber = gridSize * gridSize;
 
-// Color mappings for when showColors is TRUE
 const colorMap = {
     green: '#6ee7b7b4',
     blue: '#93c4fdab',
@@ -22,7 +19,6 @@ const colorMap = {
     orange: '#fdbb74a1'
 };
 
-// Text color mappings for light mode (when showColors is TRUE)
 const textColorMap = {
     green: '#065f46',
     blue: '#1e3a8a',
@@ -38,9 +34,7 @@ const DARK_MODE_GRAY = '#414141ff';
 const TEXT_COLOR_LIGHT = '#6e6e6eff';     
 const TEXT_COLOR_DARK = '#aaaaaaff';   
 
-// ==========================================================
-// DOM ELEMENTS
-// ==========================================================
+
 const board = document.getElementById('game-board');
 const startButton = document.getElementById('start-button');
 const timerDisplay = document.getElementById('timer-display');
@@ -49,9 +43,6 @@ const highScoreDisplay = document.getElementById('high-score');
 const showColorsCheckbox = document.getElementById('show-colors');
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 
-// ==========================================================
-// UTILITY FUNCTIONS
-// ==========================================================
 
 /**
  * Shuffles an array in place using Fisher-Yates algorithm
@@ -122,7 +113,6 @@ function createBoard() {
     board.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
     board.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
 
-    // Update grid class for dynamic font sizing
     board.className = `schulte-grid grid-${gridSize}`;
 
     numbers.forEach(number => {
@@ -192,17 +182,14 @@ function checkClick(event) {
         }
 
         if (showColors) {
-            // Logic for when colors ARE enabled
             cell.style.backgroundColor = colorMap[clickColor];
             
-            // Text color logic for colored clicks
             if (isDarkMode()) {
-                cell.style.color = '#ffffff'; // White text in dark mode for contrast
+                cell.style.color = '#ffffff'; 
             } else {
-                cell.style.color = textColorMap[clickColor]; // Colored text in light mode
+                cell.style.color = textColorMap[clickColor]; 
             }
         } else {
-            // Logic for when colors are NOT enabled (use theme-specific gray)
             if (isDarkMode()) {
                 cell.style.backgroundColor = DARK_MODE_GRAY;
                 cell.style.color = TEXT_COLOR_DARK;
@@ -236,9 +223,6 @@ function checkClick(event) {
     }
 }
 
-// ==========================================================
-// EVENT LISTENERS
-// ==========================================================
 
 // Grid size buttons
 document.querySelectorAll('.grid-btn').forEach(btn => {
