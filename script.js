@@ -13,12 +13,12 @@ let maxNumber = gridSize * gridSize;
 
 // Color mappings
 const colorMap = {
-    green: '#6ee7b738',
-    blue: '#93c4fd3f',
-    purple: '#c3b5fd3a',
-    pink: '#f9a8d442',
-    yellow: '#fddf4742',
-    orange: '#fdbb743f'
+    green: '#6ee7b7b4',
+    blue: '#93c4fdab',
+    purple: '#c3b5fdaf',
+    pink: '#f9a8d4a6',
+    yellow: '#fddf479c',
+    orange: '#fdbb74a1'
 };
 
 // Text color mappings for light mode
