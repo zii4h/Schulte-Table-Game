@@ -1,5 +1,5 @@
 let gridSize = 3;
-let clickColor = 'green';
+let clickColor = 'gray';
 let showColors = true;
 
 let gameState = 'ready';
@@ -10,6 +10,7 @@ let timeElapsed = 0;
 let maxNumber = gridSize * gridSize;
 
 const colorMap = {
+    gray: '#b1b1b1',
     green: '#6ee7b7b4',
     blue: '#93c4fdab',
     purple: '#c3b5fdaf',
@@ -19,6 +20,7 @@ const colorMap = {
 };
 
 const textColorMap = {
+    gray: '#424242ff',
     green: '#065f46',
     blue: '#1e3a8a',
     purple: '#4c1d95',
@@ -184,40 +186,28 @@ function checkClick(event) {
     const clickedNumber = parseInt(cell.dataset.number, 10);
 
     if (clickedNumber === currentNumber) {
-        // Correct click
         if (currentNumber === 1) {
             startTimer();
         }
 
-        if (showColors) {
-            cell.style.backgroundColor = colorMap[clickColor];
-            
-            if (isDarkMode()) {
-                cell.style.color = '#ffffff'; 
-            } else {
-                cell.style.color = textColorMap[clickColor]; 
-            }
-        } else {
-            if (isDarkMode()) {
-                cell.style.backgroundColor = DARK_MODE_GRAY;
-                cell.style.color = TEXT_COLOR_DARK;
-            } else {
-                cell.style.backgroundColor = LIGHT_MODE_GRAY;
-                cell.style.color = TEXT_COLOR_LIGHT;
-            }
-        }
+    // Only apply colors if the checkbox is checked
+    if (showColors) {
+        cell.style.backgroundColor = colorMap[clickColor];
+        cell.style.color = isDarkMode() ? '#ffffff' : textColorMap[clickColor];
+    }
+    // else do nothing at all (so no color change, hover color still works)
+
         cell.style.pointerEvents = 'none';
 
         currentNumber++;
 
         if (currentNumber > maxNumber) {
-            // Game won
             gameState = 'finished';
             stopTimer();
 
             saveHighScore(timeElapsed);
 
-            startButton.textContent = 'Play Again';
+            startButton.textContent = 'Play Again?';
             targetNumberDisplay.textContent = '✓';
         } else {
             targetNumberDisplay.textContent = currentNumber;
